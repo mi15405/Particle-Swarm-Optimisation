@@ -16,11 +16,14 @@ class Surface:
 
         self.make_quads()
         self.make_normals()
-        compound(self.quads)
+        self.model = compound(self.quads)
+
+    def destroy(self):
+        self.model.visible = False
         
     def make_vertex(self, x, y, z):
         # Zamenjuju se y i z koordinate, jer je Y osa vertikalna u ovom sistemu
-        return vertex(pos = vec(x, z, y), color = color.cyan, opacity = 1)
+        return vertex(pos = vec(x, z, y), color = color.cyan, opacity = 0.8)
 
     def make_quads(self):
         # Povrsina se aproksimira mrezom kvadrata koja se pravi od tacaka.
